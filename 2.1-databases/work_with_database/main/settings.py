@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
-
+from data_settings import pass_postpres
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -51,11 +51,11 @@ MIDDLEWARE = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'netology_import_phones',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'NAME': 'netlology_HW5',
+        # 'HOST': '127.0.0.1',
+        # 'PORT': '5432',
         'USER': 'postgres',
-        'PASSWORD': 'ваш пароль',
+        'PASSWORD': pass_postpres,
     }
 }
 
