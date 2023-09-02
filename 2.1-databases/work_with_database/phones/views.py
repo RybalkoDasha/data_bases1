@@ -5,7 +5,13 @@ def index(request):
     return redirect('catalog')
 
 def show_catalog(request):
-    phones = Phone.objects.all()
+    tpe_srt = request.GET.get("sort", "min_price")
+    phone_options = {
+        'min_price' : {'colloum' : 'price', 'dir' : -1},
+        'max_price': {'colloum' : 'price', 'dir' : 1},
+        'name' : {'colloum' : 'name', 'dir' : 1},
+    }
+    phones = Phone.objects.order_by(phone_options.get(tpe_srt).get('colloum'))[::phone_options.get(tpe_srt).get('dir')]
     template = 'catalog.html'
     context = {
         'phones' : phones
