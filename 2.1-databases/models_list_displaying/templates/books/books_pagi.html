@@ -13,6 +13,12 @@
                 <p>Автор: {{book.author}}</p>
                 <p>Дата публикации: {{book.pub_date}}</p>
             </div>{% endfor %}
+
+        </div>
+        <div>
+            {% for page in pages %}
+            <p><a href="/books/{{page}}">{{page}}</a></p>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
