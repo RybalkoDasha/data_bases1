@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from books.views import books_view, books_pub
+from books.views import books_view, books_pub, index
 
 urlpatterns = [
-    path('', books_view, name='books'),
+    path('', index, name='index'),
+    path('books', books_view, name='books'),
     path('admin/', admin.site.urls),
     path('books/<pub_date>', books_pub)
 ]
