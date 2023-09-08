@@ -39,11 +39,11 @@
 ```python
 from django.contrib import admin
 
-from .models import Object, Relationship
+from .models import Object, Scope
 
 
 class RelationshipInline(admin.TabularInline):
-    model = Relationship
+    model = Scope
 
 
 @admin.register(Object)
@@ -51,7 +51,7 @@ class ObjectAdmin(admin.ModelAdmin):
     inlines = [RelationshipInline]
 ```
 
-Вместо `Object` должна быть модель, имеющая связь многие-ко-многим, а вместо `Relationship` должна быть модель связи, указанная как `through` для связи. Подробнее: https://docs.djangoproject.com/en/3.1/ref/models/fields/#django.db.models.ManyToManyField.through.
+Вместо `Object` должна быть модель, имеющая связь многие-ко-многим, а вместо `Scope` должна быть модель связи, указанная как `through` для связи. Подробнее: https://docs.djangoproject.com/en/3.1/ref/models/fields/#django.db.models.ManyToManyField.through.
 Все остальное django реализует автоматически.
 
 Однако в этой задаче вам потребуется добавить дополнительную проверку при сохранении объекта.
@@ -62,7 +62,7 @@ from django.contrib import admin
 from django.core.exceptions import ValidationError
 from django.forms import BaseInlineFormSet
 
-from .models import Object, Relationship
+from .models import Object, Scope
 
 
 class RelationshipInlineFormset(BaseInlineFormSet):
@@ -79,7 +79,7 @@ class RelationshipInlineFormset(BaseInlineFormSet):
 
 
 class RelationshipInline(admin.TabularInline):
-    model = Relationship
+    model = Scope
     formset = RelationshipInlineFormset
 
 
