@@ -8,9 +8,7 @@ def index(request):
 def books_view(request):
     template = 'books/books_list.html'
     books_data = Book.objects.all()
-    '''
-    из-за того что не смог победить дататайм пришлось перебарть объект books_data
-    '''
+
     books_list = list()
     for i in books_data:
         books_list.append({
